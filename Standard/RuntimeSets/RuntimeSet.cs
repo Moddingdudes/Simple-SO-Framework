@@ -11,14 +11,27 @@ namespace CyberneticStudios.SOFramework
     {
         public List<T> Items = new List<T>();
 
+        public System.Action<T> OnItemAdded;
+        public System.Action<T> OnItemRemoved;
+
         public void Add(T item)
         {
-            if (!Items.Contains(item)) Items.Add(item);
+            if (!Items.Contains(item))
+            {
+                Items.Add(item);
+
+                OnItemAdded?.Invoke(item);
+            }
         }
 
         public void Remove(T item)
         {
-            if (Items.Contains(item)) Items.Remove(item);
+            if (Items.Contains(item))
+            {
+                Items.Remove(item);
+
+                OnItemRemoved?.Invoke(item);
+            }
         }
     }
 }
