@@ -12,17 +12,21 @@ namespace CyberneticStudios.SOFramework
     {
         public enum TagFilterType { NO_FILTER, ALLOWED, DISALLOWED }
         [Header("References")]
-        [SerializeField] private RuntimeSet<T> runtimeSet;
+        [SerializeField] protected RuntimeSet<T> runtimeSet;
         [Header("Filters")]
-        [SerializeField] private LayerMask layerMask;
-        [SerializeField] private TagFilterType tagFilterType;
-        [SerializeField] private List<string> tagFilter;
+        [SerializeField] protected LayerMask layerMask;
+        [SerializeField] protected TagFilterType tagFilterType;
+        [SerializeField] protected List<string> tagFilter;
 
         protected virtual void OnTriggerEnter(Collider collider)
         {
             if (ColliderIsValid(collider))
             {
-                runtimeSet.Add(collider.GetComponent<T>());
+                if (collider.TryGetComponent(out T type))
+                {
+                    //Only add it if the type exists
+                    runtimeSet.Add(type);
+                }
             }
         }
 
