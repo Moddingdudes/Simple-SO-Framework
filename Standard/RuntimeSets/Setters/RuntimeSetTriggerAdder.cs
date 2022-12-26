@@ -20,17 +20,14 @@ namespace CyberneticStudios.SOFramework
 
         protected virtual void OnTriggerEnter(Collider collider)
         {
-            Debug.Log("Collider entered");
             if (ColliderIsValid(collider))
             {
-                Debug.Log("Collider is valid and added");
                 runtimeSet.Add(collider.GetComponent<T>());
             }
         }
 
         protected virtual void OnTriggerExit(Collider collider)
         {
-            Debug.Log("Collider removed");
             runtimeSet.Remove(collider.GetComponent<T>());
         }
 
