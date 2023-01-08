@@ -6,7 +6,7 @@ namespace CyberneticStudios.SOFramework
     /// Base class of all Event Channels. Event channels are scriptable objects that raise events and can be listened
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class EventChannelSO<T> : ScriptableObject
+    public abstract class GameEvent<T> : ScriptableObject
     {
 
 #if UNITY_EDITOR
@@ -14,12 +14,12 @@ namespace CyberneticStudios.SOFramework
         public string DeveloperDescription = "";
 #endif
 
-        public System.Action<T> OnEventRaised;
-        [SerializeField] private DebugInformation debugInformation;
+        public System.Action<T> OnGameEventRaised;
+        [SerializeField] DebugInformation debugInformation;
 
         public void RaiseEvent(T value)
         {
-            OnEventRaised?.Invoke(value);
+            OnGameEventRaised?.Invoke(value);
 
             if (debugInformation.debugEnabled)
             {

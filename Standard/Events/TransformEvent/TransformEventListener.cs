@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace CyberneticStudios.SOFramework
 {
-    public class GameObjectEventListener : EventListener<GameObject>
+    public class TransformEventListener : GameEventListener<Transform>
     {
 
     }
