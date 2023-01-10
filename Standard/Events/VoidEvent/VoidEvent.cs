@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace CyberneticStudios.SOFramework
 {
-    [CreateAssetMenu(menuName = AssetMenu.Events + "Void Event Channel")]
-    public class VoidEventChannelSO : ScriptableObject
+    [CreateAssetMenu(menuName = AssetMenu.Events + "Void Event")]
+    public class VoidEvent : ScriptableObject
     {
 
 #if UNITY_EDITOR
