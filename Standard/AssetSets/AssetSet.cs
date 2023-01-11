@@ -9,6 +9,11 @@ namespace CyberneticStudios.SOFramework
     /// <typeparam name="T">The type the set is</typeparam>
     public abstract class AssetSet<T> : ScriptableObject
     {
+#if UNITY_EDITOR
+        [Multiline]
+        public string DeveloperDescription = "";
+#endif
+
         public List<T> Items = new List<T>();
     }
 }
