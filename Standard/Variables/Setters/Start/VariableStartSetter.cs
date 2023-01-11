@@ -1,7 +1,7 @@
 using CyberneticStudios.SOFramework;
 using UnityEngine;
 
-namespace CyberneticStudios
+namespace CyberneticStudios.SOFramework
 {
     /// <summary>
     /// Sets a scriptable object variable upon start to local component of type T

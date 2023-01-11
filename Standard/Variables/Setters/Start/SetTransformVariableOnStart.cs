@@ -1,7 +1,7 @@
 using CyberneticStudios.SOFramework;
 using UnityEngine;
 
-namespace CyberneticStudios
+namespace CyberneticStudios.SOFramework
 {
     public class SetTransformVariableOnStart : VariableStartSetter<Transform>
     {
