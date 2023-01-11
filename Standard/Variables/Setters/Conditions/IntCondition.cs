@@ -23,7 +23,9 @@ namespace CyberneticStudios.SOFramework
         [SerializeField] private IntVariable listeningInt;
         [SerializeField] private ComparisonTypes comparisonType;
         [SerializeField] private IntReference comparerInt;
+        [SerializeField] private int comparerIntOffset; //Offsets the numerical value by this amount
         [SerializeField] private UnityEvent<int> OnValueChangedAndConditionMet;
+        [SerializeField] private UnityEvent<int> OnValueChangedAndConditionNotMet;
 
         private void Start()
         {
@@ -40,39 +42,63 @@ namespace CyberneticStudios.SOFramework
             switch (comparisonType)
             {
                 case ComparisonTypes.LESS_THAN:
-                    if (newValue < comparerInt.Value)
+                    if (newValue < comparerInt.Value + comparerIntOffset)
                     {
                         OnValueChangedAndConditionMet?.Invoke(newValue);
+                    }
+                    else
+                    {
+                        OnValueChangedAndConditionNotMet?.Invoke(newValue);
                     }
                     break;
                 case ComparisonTypes.LESS_THAN_OR_EQUAL:
-                    if (newValue <= comparerInt.Value)
+                    if (newValue <= comparerInt.Value + comparerIntOffset)
                     {
                         OnValueChangedAndConditionMet?.Invoke(newValue);
+                    }
+                    else
+                    {
+                        OnValueChangedAndConditionNotMet?.Invoke(newValue);
                     }
                     break;
                 case ComparisonTypes.EQUAL_TO:
-                    if (newValue == comparerInt.Value)
+                    if (newValue == comparerInt.Value + comparerIntOffset)
                     {
                         OnValueChangedAndConditionMet?.Invoke(newValue);
+                    }
+                    else
+                    {
+                        OnValueChangedAndConditionNotMet?.Invoke(newValue);
                     }
                     break;
                 case ComparisonTypes.GREATHER_THAN:
-                    if (newValue > comparerInt.Value)
+                    if (newValue > comparerInt.Value + comparerIntOffset)
                     {
                         OnValueChangedAndConditionMet?.Invoke(newValue);
+                    }
+                    else
+                    {
+                        OnValueChangedAndConditionNotMet?.Invoke(newValue);
                     }
                     break;
                 case ComparisonTypes.GREATER_THAN_OR_EQUAL:
-                    if (newValue >= comparerInt.Value)
+                    if (newValue >= comparerInt.Value + comparerIntOffset)
                     {
                         OnValueChangedAndConditionMet?.Invoke(newValue);
                     }
+                    else
+                    {
+                        OnValueChangedAndConditionNotMet?.Invoke(newValue);
+                    }
                     break;
                 case ComparisonTypes.NOT_EQUAL:
-                    if (newValue != comparerInt.Value)
+                    if (newValue != comparerInt.Value + comparerIntOffset)
                     {
                         OnValueChangedAndConditionMet?.Invoke(newValue);
+                    }
+                    else
+                    {
+                        OnValueChangedAndConditionNotMet?.Invoke(newValue);
                     }
                     break;
             }
