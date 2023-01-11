@@ -13,6 +13,7 @@ namespace CyberneticStudios.SOFramework
         public enum TagFilterType { NO_FILTER, ALLOWED, DISALLOWED }
         [Header("References")]
         [SerializeField] protected RuntimeSet<T> runtimeSet;
+        [SerializeField] protected List<IntVariable> countListeners = new List<IntVariable>(); //When an item is appended, each int variable in the array will be increased by one and vise versa for element removal
         [Header("Filters")]
         [SerializeField] protected LayerMask layerMask;
         [SerializeField] protected TagFilterType tagFilterType;
@@ -26,6 +27,11 @@ namespace CyberneticStudios.SOFramework
                 {
                     //Only add it if the type exists
                     runtimeSet.Add(type);
+
+                    foreach (IntVariable variable in countListeners)
+                    {
+                        variable.ApplyChange(1);
+                    }
                 }
             }
         }
@@ -33,6 +39,11 @@ namespace CyberneticStudios.SOFramework
         protected virtual void OnTriggerExit(Collider collider)
         {
             runtimeSet.Remove(collider.GetComponent<T>());
+
+            foreach (IntVariable variable in countListeners)
+            {
+                variable.ApplyChange(-1);
+            }
         }
 
         protected virtual bool ColliderIsValid(Collider collider)
