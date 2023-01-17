@@ -13,7 +13,19 @@ namespace CyberneticStudios.SOFramework
         public System.Action<T> OnChanged;
 
         [SerializeField] private T value;
+        [SerializeField] private bool resetBeforePlay = false;
         [SerializeField] private DebugInformation debugInformation;
+
+        private void OnEnable()
+        {
+            if (resetBeforePlay)
+                ResetVariable();
+        }
+
+        public void ResetVariable()
+        {
+            value = default(T);
+        }
 
         public T Value
         {

@@ -16,8 +16,21 @@ namespace CyberneticStudios.SOFramework
 
         public List<T> Items = new List<T>();
 
+        [SerializeField] private bool clearOnStart = false;
+
         public System.Action<T> OnItemAdded;
         public System.Action<T> OnItemRemoved;
+
+        private void OnEnable()
+        {
+            if (clearOnStart)
+                Clear();
+        }
+
+        public void Clear()
+        {
+            Items.Clear();
+        }
 
         public void Add(T item)
         {
