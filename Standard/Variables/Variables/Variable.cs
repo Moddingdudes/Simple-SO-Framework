@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CyberneticStudios.SOFramework
@@ -18,6 +19,17 @@ namespace CyberneticStudios.SOFramework
 
         private void OnEnable()
         {
+            SOReset.OnStart += OnStartCallback;
+        }
+
+        private void OnDisable()
+        {
+            SOReset.OnStart -= OnStartCallback;
+        }
+
+        private void OnStartCallback()
+        {
+            //Check if we should reset
             if (resetBeforePlay)
                 ResetVariable();
         }

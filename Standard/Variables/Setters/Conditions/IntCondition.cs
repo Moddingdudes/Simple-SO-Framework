@@ -24,12 +24,17 @@ namespace CyberneticStudios.SOFramework
         [SerializeField] private ComparisonTypes comparisonType;
         [SerializeField] private IntReference comparerInt;
         [SerializeField] private int comparerIntOffset; //Offsets the numerical value by this amount
+        [SerializeField] private bool invokeConditionOnStart;
+
         [SerializeField] private UnityEvent<int> OnValueChangedAndConditionMet;
         [SerializeField] private UnityEvent<int> OnValueChangedAndConditionNotMet;
 
         private void Start()
         {
             listeningInt.OnChanged += OnListeningIntChanged;
+
+            if (invokeConditionOnStart)
+                OnListeningIntChanged(listeningInt.Value);
         }
 
         private void OnDestroy()

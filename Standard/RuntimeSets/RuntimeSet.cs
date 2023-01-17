@@ -23,6 +23,17 @@ namespace CyberneticStudios.SOFramework
 
         private void OnEnable()
         {
+            SOReset.OnStart += OnStartCallback;
+        }
+
+        private void OnDisable()
+        {
+            SOReset.OnStart -= OnStartCallback;
+        }
+
+        private void OnStartCallback()
+        {
+            //Check if we should clear
             if (clearOnStart)
                 Clear();
         }
