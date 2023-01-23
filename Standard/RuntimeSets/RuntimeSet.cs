@@ -18,8 +18,12 @@ namespace CyberneticStudios.SOFramework
 
         [SerializeField] private bool clearOnStart = false;
 
+        private bool locked;
+
         public System.Action<T> OnItemAdded;
         public System.Action<T> OnItemRemoved;
+
+        public bool Locked => locked;
 
         private void OnEnable()
         {
@@ -43,8 +47,20 @@ namespace CyberneticStudios.SOFramework
             Items.Clear();
         }
 
+        public void Lock()
+        {
+            locked = true;
+        }
+
+        public void Unlock()
+        {
+            locked = false;
+        }
+
         public void Add(T item)
         {
+            if (locked) return;
+
             if (!Items.Contains(item))
             {
                 Items.Add(item);
@@ -55,6 +71,8 @@ namespace CyberneticStudios.SOFramework
 
         public void Remove(T item)
         {
+            if (locked) return;
+
             if (Items.Contains(item))
             {
                 Items.Remove(item);
