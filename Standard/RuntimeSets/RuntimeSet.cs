@@ -39,7 +39,11 @@ namespace CyberneticStudios.SOFramework
         {
             //Check if we should clear
             if (clearOnStart)
+            {
                 Clear();
+
+                locked = false;
+            }
         }
 
         public void Clear()
