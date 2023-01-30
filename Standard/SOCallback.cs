@@ -5,14 +5,20 @@ namespace CyberneticStudios.SOFramework
     /// <summary>
     /// A utility to reset Scriptable Object data utilizing MonoBehaviour callbacks
     /// </summary>
-    public class SOReset : MonoBehaviour
+    public class SOCallback : MonoBehaviour
     {
         //This setup is far from ideal considering it adds a GameObject dependency in-scene, though it is the only solution as of right now.
-        public static System.Action OnStart;
+        public static System.Action OnStartCallback;
+        public static System.Action OnDestroyCallback;
 
         void Start()
         {
-            OnStart?.Invoke();
+            OnStartCallback?.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyCallback.Invoke();
         }
     }
 }

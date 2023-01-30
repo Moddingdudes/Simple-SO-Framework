@@ -27,12 +27,12 @@ namespace CyberneticStudios.SOFramework
 
         private void OnEnable()
         {
-            SOReset.OnStart += OnStartCallback;
+            SOCallback.OnStartCallback += OnStartCallback;
         }
 
         private void OnDisable()
         {
-            SOReset.OnStart -= OnStartCallback;
+            SOCallback.OnStartCallback -= OnStartCallback;
         }
 
         private void OnStartCallback()
