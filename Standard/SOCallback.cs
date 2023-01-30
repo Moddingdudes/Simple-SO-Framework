@@ -18,7 +18,7 @@ namespace CyberneticStudios.SOFramework
 
         private void OnDestroy()
         {
-            OnDestroyCallback.Invoke();
+            OnDestroyCallback?.Invoke();
         }
     }
 }
