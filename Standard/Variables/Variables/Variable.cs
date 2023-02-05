@@ -15,6 +15,7 @@ namespace CyberneticStudios.SOFramework
 
         [SerializeField] private T value;
         [SerializeField] private bool resetBeforePlay = false;
+        [SerializeField] private T defaultValue;
         [SerializeField] private DebugInformation debugInformation;
 
         private void OnEnable()
@@ -36,7 +37,7 @@ namespace CyberneticStudios.SOFramework
 
         public void ResetVariable()
         {
-            value = default(T);
+            value = defaultValue;
         }
 
         public T Value
