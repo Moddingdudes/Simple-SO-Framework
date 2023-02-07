@@ -38,11 +38,14 @@ namespace CyberneticStudios.SOFramework
 
         protected virtual void OnTriggerExit(Collider collider)
         {
-            runtimeSet.Remove(collider.GetComponent<T>());
-
-            foreach (IntVariable variable in countListeners)
+            if (ColliderIsValid(collider))
             {
-                variable.ApplyChange(-1);
+                runtimeSet.Remove(collider.GetComponent<T>());
+
+                foreach (IntVariable variable in countListeners)
+                {
+                    variable.ApplyChange(-1);
+                }
             }
         }
 
