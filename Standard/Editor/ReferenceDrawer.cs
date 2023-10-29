@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace CyberneticStudios
+namespace CyberneticStudios.SOFramework
 {
     public abstract class ReferenceDrawer<T> : PropertyDrawer
     {
