@@ -45,30 +45,40 @@ namespace CyberneticStudios.SOFramework
             get => value;
             set
             {
-                this.value = value;
+                SetValue(value);
 
                 OnChanged?.Invoke(value);
+            }
+        }
 
-                if (debugInformation.debugEnabled)
+        public void SetValueSilent(T value)
+        {
+            SetValue(value);
+        }
+
+        private void SetValue(T value)
+        {
+            this.value = value;
+
+            if (debugInformation.debugEnabled)
+            {
+                //Debug information
+
+                string debugMessage = debugInformation.debugMessage;
+                if (debugInformation.includeData)
+                    debugMessage += value;
+
+                switch (debugInformation.debugLevel)
                 {
-                    //Debug information
-
-                    string debugMessage = debugInformation.debugMessage;
-                    if (debugInformation.includeData)
-                        debugMessage += value;
-
-                    switch (debugInformation.debugLevel)
-                    {
-                        case DebugInformation.DebugLevel.INFO:
-                            Debug.Log(debugMessage);
-                            break;
-                        case DebugInformation.DebugLevel.WARNING:
-                            Debug.LogWarning(debugMessage);
-                            break;
-                        case DebugInformation.DebugLevel.ERROR:
-                            Debug.LogError(debugMessage);
-                            break;
-                    }
+                    case DebugInformation.DebugLevel.INFO:
+                        Debug.Log(debugMessage);
+                        break;
+                    case DebugInformation.DebugLevel.WARNING:
+                        Debug.LogWarning(debugMessage);
+                        break;
+                    case DebugInformation.DebugLevel.ERROR:
+                        Debug.LogError(debugMessage);
+                        break;
                 }
             }
         }
