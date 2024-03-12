@@ -27,15 +27,15 @@ namespace CyberneticStudios.SOFramework
 
         private void OnEnable()
         {
-            SOCallback.OnStartCallback += OnStartCallback;
+            SOCallback.OnAwakeCallback += OnAwakeCallback;
         }
 
         private void OnDisable()
         {
-            SOCallback.OnStartCallback -= OnStartCallback;
+            SOCallback.OnAwakeCallback -= OnAwakeCallback;
         }
 
-        private void OnStartCallback()
+        private void OnAwakeCallback()
         {
             //Check if we should clear
             if (clearOnStart)
