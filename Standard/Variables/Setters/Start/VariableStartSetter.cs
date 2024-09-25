@@ -7,7 +7,8 @@ namespace CyberneticStudios.SOFramework
     /// Sets a scriptable object variable upon start to local component of type T
     /// </summary>
     /// <typeparam name="T">Type of component to set the variable to</typeparam>
-    public class VariableStartSetter<T> : MonoBehaviour
+    [DefaultExecutionOrder(1)]
+    public class VariableStartSetter<T> : MonoBehaviour where T : Object
     {
         [SerializeField] private Variable<T> variableToSet;
 

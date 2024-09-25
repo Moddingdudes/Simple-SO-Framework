@@ -1,9 +1,9 @@
 using CyberneticStudios.SOFramework;
 using UnityEngine;
 
-namespace CyberneticStudios
+namespace CyberneticStudios.SOFramework
 {
-    [CreateAssetMenu(menuName = AssetMenu.RuntimeSets + "Game Object Runtime Set")]
+    [CreateAssetMenu(menuName = AssetMenu.RuntimeSets + "GameObject Runtime Set")]
     public class GameObjectRuntimeSet : RuntimeSet<GameObject>
     {
 

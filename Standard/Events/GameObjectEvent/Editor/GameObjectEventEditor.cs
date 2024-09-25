@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 
 namespace CyberneticStudios.SOFramework
@@ -6,7 +6,7 @@ namespace CyberneticStudios.SOFramework
     [CustomEditor(typeof(GameObjectEvent), editorForChildClasses: true)]
     public class GameObjectEventEditor : Editor
     {
-        private GameObject gameObject;
+        GameObject gameObject;
 
         public override void OnInspectorGUI()
         {

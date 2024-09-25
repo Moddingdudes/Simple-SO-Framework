@@ -16,7 +16,7 @@ namespace CyberneticStudios.SOFramework
 
         public List<T> Items = new List<T>();
 
-        [SerializeField] private bool clearOnStart = false;
+        [SerializeField] private bool clearOnStart = true;
 
         private bool locked;
 
