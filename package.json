@@ -1,0 +1,10 @@
+{
+  "name": "com.cyberneticstudios.simplesoframework",
+  "version": "1.0.0",
+  "displayName": "Simple SO Framework",
+  "description": "A framework that uses Scriptable Objects to provide a more streamlined dependency injection solution for Unity",
+  "unity": "2021.3",
+  "author": {
+    "name": "Zachary Wyatt"
+  }
+}
